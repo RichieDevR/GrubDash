@@ -48,7 +48,7 @@ const list = (req, res) => {
   res.json({ data: dishes });
 };
 
-const create = (req, res, next) => {
+const create = (req, res) => {
   const { data: { name, description, price, image_url } = {} } = req.body;
 const newDish = {
     id: nextId(),
