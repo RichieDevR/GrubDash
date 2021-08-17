@@ -35,7 +35,7 @@ function validateStatus(req, res, next) {
     }
   }
 
-  // continues with validation if method isn't delete or it is pending
+  //checks to validate value of status if method is not delete
   const status = req.body.data.status;
   const validStatuses = [
     "pending",
@@ -66,7 +66,7 @@ function validateStatus(req, res, next) {
   return next();
 }
 
-function idMatchesRoute(req, res, next) {
+function idMatch(req, res, next) {
   const id = req.body.data.id;
   const orderId = res.locals.orderId;
 
@@ -164,6 +164,6 @@ module.exports = {
   list,
   create: [validateOrder, create],
   read: [orderExists, read],
-  update: [orderExists, idMatchesRoute, validateOrder, validateStatus, update],
+  update: [orderExists, idMatch, validateOrder, validateStatus, update],
   delete: [orderExists, validateStatus, destroy],
 };
